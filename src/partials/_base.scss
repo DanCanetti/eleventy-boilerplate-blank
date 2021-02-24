@@ -1,0 +1,229 @@
+/*
+    Base
+    ---
+    Default style rules.
+    E.G. html, body, a
+*/
+
+@import 'reset';
+
+// Colour Variables
+$primary:   #111;       // Black
+$secondary:  #fff;      // White
+$tertiary:  #800e13;    // Alt
+
+// Spacing Variables
+$maxwidth:    750px;      // Max Width
+$ds:          50px;       // Default spacing
+
+// Media Queries
+$screen-sm:   576px;
+$screen-md:   1025px;
+@mixin sm {
+   @media (min-width: #{$screen-sm}) {
+       @content;
+   }
+}
+@mixin md {
+  @media (min-width: #{$screen-md}) {
+      @content;
+  }
+}
+
+// Mixins
+@mixin transitionall($length) {
+  -webkit-transition: all $length ease-in-out;
+  -moz-transition: all $length ease-in-out;
+  -o-transition: all $length ease-in-out;
+  transition: all $length ease-in-out;
+}
+
+@mixin transitiondelay($length) {
+  -webkit-transition-delay: $length;
+  -moz-transition-delay: $length;
+  -o-transition-delay: $length;
+  transition-delay: $length;
+}
+
+// Animation
+@keyframes fade-in {      // Fade In
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+$pfont:       'Karla', sans-serif;
+
+// Serif
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+$serif:       'Playfair Display', serif;
+
+// Monospace
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+$mono:       'JetBrains Mono', monospace;
+
+$fontreg:    400;
+$fontbold:   700;
+
+// Basics
+body {
+  font-family: $pfont;
+  font-weight: $fontreg;
+}
+
+// Smooth Scrolling
+@media screen and (prefers-reduced-motion: reduce) {
+	a[href*="#"] {
+		scroll-behavior: auto;
+	}
+}
+
+// Defaults
+h1, .site-title {
+    font-family: $serif;
+    font-weight: $fontbold;
+    font-size: 3rem;
+    display: block;
+    margin: 0 0 calc(#{$ds} / 2);
+    line-height: 1.25;
+    @include sm {
+        font-size: 4rem;
+    }
+}
+
+h2 {
+    @extend h1;
+    font-weight: $fontreg;
+    font-size: 2.5rem;
+    margin-top: $ds;
+    @include sm {
+      font-size: 3rem;
+  }
+}
+
+h3 {
+    @extend h2;
+    font-family: $pfont;
+    font-weight: $fontbold;
+    font-size: 1.75rem;
+    letter-spacing: .05rem;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-top: calc(#{$ds} / 2);
+    & + a {
+      display: inline-block;
+      margin-top: calc(#{$ds} / 5);
+    }
+}
+
+a {
+    color: $primary;
+    text-decoration: underline;
+    text-decoration-color: $tertiary;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    &:hover {
+      cursor: pointer;
+      text-decoration-thickness: 2px;
+    }
+}
+
+ul, ol {
+  padding-left: 20px;
+  li {
+    font-size: 1.25rem;
+    margin-top: calc(#{$ds} / 2);
+  }
+}
+
+abbr {
+  color: $primary;
+  text-decoration: underline;
+  text-decoration-color: $tertiary;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-style: dotted;
+  &:hover {
+    cursor: pointer;
+    text-decoration-style: dashed;
+  }
+}
+
+.strong {
+    font-weight: $fontbold;
+}
+
+blockquote {
+    font-family: $serif;
+    margin: $ds;
+    p {
+      margin: 0;
+    }
+}
+
+code {
+  background-color: rgba(0,0,0,0.1);
+  font-size: 1rem;
+  font-family: monospace;
+  padding: 5px;
+}
+
+pre {
+  background-color: rgba(0,0,0,0.1);
+  margin: calc(#{$ds} / 2) 0;
+  padding: calc(#{$ds} / 2);
+  width: 100%;
+  overflow-y: scroll;
+  code {
+    background: transparent;
+  }
+}
+
+s {
+  opacity: 0.5;
+}
+
+mark {
+  background: $tertiary;
+  color: $secondary;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: 50px 0;
+  padding: 0;
+  border: none;
+  height: 1px;
+  background: $primary;
+  opacity: 0.5;
+  width: 100%;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 0;
+  background: $tertiary;
+  color: $secondary;
+  opacity: 1;
+  @include transitionall(0.3s);
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}

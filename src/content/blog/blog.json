@@ -1,0 +1,5 @@
+{
+    "layout": "layout.liquid",
+    "pageClass": "post",
+    "tags": ["posts"]
+}

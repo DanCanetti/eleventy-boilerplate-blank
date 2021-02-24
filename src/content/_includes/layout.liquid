@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include meta %}
+        {% include social %}
+    </head>
+    <body class="{{ pageClass }}">
+      <div class="wrapper">
+        <header>
+          {% if pageClass != 'home' %}<span class="site-title">{{ siteInfo.siteTitle }}</span>{% else %}<h1>{{ siteInfo.siteTitle }}</h1>{% endif %}
+        </header>
+        {% include nav %}
+        {% if pageClass != 'home' %}<h1>{{ pageTitle }}</h1>{% endif %}
+        {{ content }}
+        {% if pageClass == 'post' %}
+        {% include socialshare %}
+        {% endif %}
+        {% include footer %}
+      </div>
+    </body>
+</html>
